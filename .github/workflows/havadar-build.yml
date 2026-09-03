@@ -1,0 +1,34 @@
+name: Havadar build
+
+on:
+  push:
+    branches:
+      - havadar/fa-main
+      - main
+  workflow_dispatch:
+
+jobs:
+  apk:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up JDK
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          java-version-file: .github/.java-version
+          distribution: temurin
+
+      - name: Set up gradle
+        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
+
+      - name: Assemble basic debug APK (fork build, no breezy config)
+        run: ./gradlew assembleBasicDebug --stacktrace
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: havadar-debug-apk
+          path: app/build/outputs/apk/basic/debug/*.apk
+          if-no-files-found: error
