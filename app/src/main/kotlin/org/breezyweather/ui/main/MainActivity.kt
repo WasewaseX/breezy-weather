@@ -65,6 +65,7 @@ import breezyweather.domain.location.model.Location
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.breezyweather.BreezyWeather
 import org.breezyweather.BuildConfig
@@ -83,6 +84,8 @@ import org.breezyweather.common.utils.helpers.IntentHelper
 import org.breezyweather.common.utils.helpers.LogHelper
 import org.breezyweather.common.utils.helpers.SnackbarHelper
 import org.breezyweather.databinding.ActivityMainBinding
+import org.breezyweather.domain.location.model.applyDefaultPreset
+import org.breezyweather.domain.settings.SettingsManager
 import org.breezyweather.domain.settings.SettingsChangedMessage
 import org.breezyweather.sources.SourceManager
 import org.breezyweather.ui.common.composables.AlertDialogConfirmOnly
@@ -238,6 +241,26 @@ class MainActivity : BreezyActivity(), HomeFragment.Callback, ManagementFragment
 
         initModel(savedInstanceState == null)
         initView()
+
+        // Havadar: first-launch location permission prompt (declinable).
+        lifecycleScope.launch {
+            viewModel.initCompleted.first { it }
+            if (!SettingsManager.getInstance(this@MainActivity).firstLocationPromptShown) {
+                SettingsManager.getInstance(this@MainActivity).firstLocationPromptShown = true
+                if (viewModel.validLocationList.value.isEmpty() &&
+                    !hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+                    !hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                ) {
+                    requestPermissions(
+                        arrayOf(
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                        ),
+                        PERMISSION_CODE_LOCATION_ACCESS
+                    )
+                }
+            }
+        }
 
         if (viewModel.validLocationList.value.isEmpty()) {
             setManagementFragmentVisibility(true)
@@ -678,6 +701,17 @@ class MainActivity : BreezyActivity(), HomeFragment.Callback, ManagementFragment
         grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        // Havadar: after first-launch grant, offer adding your current place automatically.
+        if (requestCode == PERMISSION_CODE_LOCATION_ACCESS &&
+            grantResults.isNotEmpty() &&
+            grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+            viewModel.validLocationList.value.isEmpty()
+        ) {
+            viewModel.openChooseWeatherSourcesDialog(
+                Location(isCurrentPosition = true).applyDefaultPreset(sourceManager)
+            )
+        }
 
         if (requestCode == PERMISSION_CODE_LOCATION_ACCESS &&
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q &&

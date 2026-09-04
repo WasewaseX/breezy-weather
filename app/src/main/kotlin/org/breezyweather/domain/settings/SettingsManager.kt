@@ -264,6 +264,13 @@ class SettingsManager private constructor(
         return pressureUnit ?: PressureUnit.getDefaultUnit(context.currentLocale)
     }
 
+    // Havadar: first-launch location permission prompt shown once.
+    var firstLocationPromptShown: Boolean
+        set(value) {
+            config.edit().putBoolean("first_location_prompt_done", value).apply()
+        }
+        get() = config.getBoolean("first_location_prompt_done", false)
+
     // appearance.
     var iconProvider: String
         set(value) {

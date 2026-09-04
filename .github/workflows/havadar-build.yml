@@ -24,7 +24,7 @@ jobs:
         uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
 
       - name: Assemble basic debug APK (fork build, no breezy config)
-        run: ./gradlew assembleBasicDebug --stacktrace
+        run: ./gradlew assembleBasicDebug --build-cache --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
