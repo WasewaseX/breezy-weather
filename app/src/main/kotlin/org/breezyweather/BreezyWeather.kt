@@ -22,6 +22,7 @@ import android.content.pm.ApplicationInfo
 import android.os.Build
 import android.os.Process
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import androidx.work.WorkInfo
@@ -80,6 +81,12 @@ class BreezyWeather : Application(), Configuration.Provider {
         super.onCreate()
 
         instance = this
+
+        // Havadar: default the in-app language to Persian until the user picks one.
+        // Per-app locale is persisted by the framework (API 33+) or AppCompat (older).
+        if (AppCompatDelegate.getApplicationLocales().isEmpty) {
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("fa"))
+        }
 
         setupNotificationChannels()
 

@@ -207,10 +207,10 @@ class SettingsManager private constructor(
     // unit.
     var temperatureUnit: TemperatureUnit?
         set(value) {
-            config.edit().putString("temperature_unit", value?.id ?: "auto").apply()
+            config.edit().putString("temperature_unit", value?.id ?: "c").apply()
             notifySettingsChanged()
         }
-        get() = TemperatureUnit.getUnit(config.getString("temperature_unit", "auto") ?: "auto")
+        get() = TemperatureUnit.getUnit(config.getString("temperature_unit", "c") ?: "c")
 
     fun getTemperatureUnit(context: Context): TemperatureUnit {
         return temperatureUnit ?: TemperatureUnit.getDefaultUnit(context.currentLocale)
@@ -218,10 +218,10 @@ class SettingsManager private constructor(
 
     var distanceUnit: DistanceUnit?
         set(value) {
-            config.edit().putString("distance_unit", value?.id ?: "auto").apply()
+            config.edit().putString("distance_unit", value?.id ?: "km").apply()
             notifySettingsChanged()
         }
-        get() = DistanceUnit.getUnit(config.getString("distance_unit", "auto") ?: "auto")
+        get() = DistanceUnit.getUnit(config.getString("distance_unit", "km") ?: "km")
 
     fun getDistanceUnit(context: Context): DistanceUnit {
         return distanceUnit ?: DistanceUnit.getDefaultUnit(context.currentLocale)
@@ -229,10 +229,10 @@ class SettingsManager private constructor(
 
     var precipitationUnit: PrecipitationUnit?
         set(value) {
-            config.edit().putString("precipitation_unit", value?.id ?: "auto").apply()
+            config.edit().putString("precipitation_unit", value?.id ?: "mm").apply()
             notifySettingsChanged()
         }
-        get() = PrecipitationUnit.getUnit(config.getString("precipitation_unit", "auto") ?: "auto")
+        get() = PrecipitationUnit.getUnit(config.getString("precipitation_unit", "mm") ?: "mm")
 
     fun getPrecipitationUnit(context: Context): PrecipitationUnit {
         return precipitationUnit ?: PrecipitationUnit.getDefaultUnit(context.currentLocale)
@@ -244,10 +244,10 @@ class SettingsManager private constructor(
 
     var speedUnit: SpeedUnit?
         set(value) {
-            config.edit().putString("speed_unit", value?.id ?: "auto").apply()
+            config.edit().putString("speed_unit", value?.id ?: "kph").apply()
             notifySettingsChanged()
         }
-        get() = SpeedUnit.getUnit(config.getString("speed_unit", "auto") ?: "auto")
+        get() = SpeedUnit.getUnit(config.getString("speed_unit", "kph") ?: "kph")
 
     fun getSpeedUnit(context: Context): SpeedUnit {
         return speedUnit ?: SpeedUnit.getDefaultUnit(context.currentLocale)
@@ -255,10 +255,10 @@ class SettingsManager private constructor(
 
     var pressureUnit: PressureUnit?
         set(value) {
-            config.edit().putString("pressure_unit", value?.id ?: "auto").apply()
+            config.edit().putString("pressure_unit", value?.id ?: "hpa").apply()
             notifySettingsChanged()
         }
-        get() = PressureUnit.getUnit(config.getString("pressure_unit", "auto") ?: "auto")
+        get() = PressureUnit.getUnit(config.getString("pressure_unit", "hpa") ?: "hpa")
 
     fun getPressureUnit(context: Context): PressureUnit {
         return pressureUnit ?: PressureUnit.getDefaultUnit(context.currentLocale)

@@ -225,7 +225,7 @@ configure<ApplicationExtension> {
         it.buildConfigField(
             "String",
             "DEFAULT_LOCATION_SEARCH_SOURCE",
-            "\"${localProperties.getProperty("breezy.source.default_location_search") ?: "openmeteo"}\""
+            "\"${localProperties.getProperty("breezy.source.default_location_search") ?: "nominatim"}\""
         )
         it.buildConfigField(
             "String",
