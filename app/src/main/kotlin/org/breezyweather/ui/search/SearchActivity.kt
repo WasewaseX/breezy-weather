@@ -36,7 +36,6 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tune
@@ -78,8 +77,8 @@ import org.breezyweather.R
 import org.breezyweather.common.activities.BreezyActivity
 import org.breezyweather.common.extensions.currentLocale
 import org.breezyweather.common.extensions.inputMethodManager
-import org.breezyweather.domain.location.model.LocationAddressInfo
-import org.breezyweather.domain.location.model.toLocationWithAddressInfo
+import breezyweather.domain.location.model.LocationAddressInfo
+import breezyweather.domain.location.model.toLocationWithAddressInfo
 import org.breezyweather.common.source.ConfigurableSource
 import org.breezyweather.common.source.NonFreeNetSource
 import org.breezyweather.common.source.RemovedSource
@@ -117,27 +116,7 @@ class SearchActivity : BreezyActivity() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
-    data class QuickCity(val name: String, val lat: Double, val lon: Double)
 
-    companion object {
-        private val HAVADAR_QUICK_CITIES = listOf(
-            QuickCity("تهران", 35.6892, 51.3890),
-            QuickCity("مشهد", 36.2605, 59.6168),
-            QuickCity("اصفهان", 32.6539, 51.6660),
-            QuickCity("کرج", 35.8355, 50.9915),
-            QuickCity("شیراز", 29.5918, 52.5837),
-            QuickCity("تبریز", 38.0800, 46.2919),
-            QuickCity("قم", 34.6416, 50.8746),
-            QuickCity("اهواز", 31.3183, 48.6706),
-            QuickCity("رشت", 37.2808, 49.5832),
-            QuickCity("کرمانشاه", 34.3142, 47.0650),
-            QuickCity("یزد", 31.8974, 54.3569),
-            QuickCity("ارومیه", 37.5527, 45.0761),
-            QuickCity("کرمان", 30.2839, 57.0834),
-            QuickCity("زاهدان", 29.4963, 60.8629),
-            QuickCity("بندرعباس", 27.1832, 56.2666)
-        )
-    }
 
     @Composable
     private fun ContentView() {
@@ -449,3 +428,24 @@ class SearchActivity : BreezyActivity() {
         const val KEY_LOCATION = "location"
     }
 }
+
+
+private data class QuickCity(val name: String, val lat: Double, val lon: Double)
+
+private val HAVADAR_QUICK_CITIES = listOf(
+    QuickCity("تهران", 35.6892, 51.3890),
+    QuickCity("مشهد", 36.2605, 59.6168),
+    QuickCity("اصفهان", 32.6539, 51.6660),
+    QuickCity("کرج", 35.8355, 50.9915),
+    QuickCity("شیراز", 29.5918, 52.5837),
+    QuickCity("تبریز", 38.0800, 46.2919),
+    QuickCity("قم", 34.6416, 50.8746),
+    QuickCity("اهواز", 31.3183, 48.6706),
+    QuickCity("رشت", 37.2808, 49.5832),
+    QuickCity("کرمانشاه", 34.3142, 47.0650),
+    QuickCity("یزد", 31.8974, 54.3569),
+    QuickCity("ارومیه", 37.5527, 45.0761),
+    QuickCity("کرمان", 30.2839, 57.0834),
+    QuickCity("زاهدان", 29.4963, 60.8629),
+    QuickCity("بندرعباس", 27.1832, 56.2666)
+)

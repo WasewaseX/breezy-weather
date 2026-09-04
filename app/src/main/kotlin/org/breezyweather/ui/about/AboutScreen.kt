@@ -18,6 +18,8 @@ package org.breezyweather.ui.about
 
 import android.content.Intent
 import androidx.activity.compose.LocalActivity
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.Crossfade
@@ -284,7 +286,7 @@ internal fun AboutScreen(
                     isLast = true,
                     icon = {
                         Icon(
-                            imageVector = androidx.compose.material.icons.Icons.Filled.Star,
+                            imageVector = Icons.Filled.Star,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onSurface
                         )
