@@ -34,6 +34,8 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -48,6 +50,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -73,7 +76,10 @@ import org.breezyweather.BreezyWeather
 import org.breezyweather.BuildConfig
 import org.breezyweather.R
 import org.breezyweather.common.activities.BreezyActivity
+import org.breezyweather.common.extensions.currentLocale
 import org.breezyweather.common.extensions.inputMethodManager
+import org.breezyweather.domain.location.model.LocationAddressInfo
+import org.breezyweather.domain.location.model.toLocationWithAddressInfo
 import org.breezyweather.common.source.ConfigurableSource
 import org.breezyweather.common.source.NonFreeNetSource
 import org.breezyweather.common.source.RemovedSource
@@ -109,6 +115,28 @@ class SearchActivity : BreezyActivity() {
         }
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    data class QuickCity(val name: String, val lat: Double, val lon: Double)
+
+    companion object {
+        private val HAVADAR_QUICK_CITIES = listOf(
+            QuickCity("تهران", 35.6892, 51.3890),
+            QuickCity("مشهد", 36.2605, 59.6168),
+            QuickCity("اصفهان", 32.6539, 51.6660),
+            QuickCity("کرج", 35.8355, 50.9915),
+            QuickCity("شیراز", 29.5918, 52.5837),
+            QuickCity("تبریز", 38.0800, 46.2919),
+            QuickCity("قم", 34.6416, 50.8746),
+            QuickCity("اهواز", 31.3183, 48.6706),
+            QuickCity("رشت", 37.2808, 49.5832),
+            QuickCity("کرمانشاه", 34.3142, 47.0650),
+            QuickCity("یزد", 31.8974, 54.3569),
+            QuickCity("ارومیه", 37.5527, 45.0761),
+            QuickCity("کرمان", 30.2839, 57.0834),
+            QuickCity("زاهدان", 29.4963, 60.8629),
+            QuickCity("بندرعباس", 27.1832, 56.2666)
+        )
     }
 
     @Composable
@@ -227,6 +255,38 @@ class SearchActivity : BreezyActivity() {
                                 .fillMaxSize()
                                 .padding(dimensionResource(R.dimen.normal_margin))
                         ) {
+                            // Havadar: quick-add major Iranian cities (works even if online search fails)
+                            if (text.isEmpty()) {
+                                Text(
+                                    text = stringResource(R.string.havadar_quick_add_cities),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = MaterialTheme.colorScheme.onSurface
+                                )
+                                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.small_margin)))
+                                LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                    items(HAVADAR_QUICK_CITIES) { city ->
+                                        SuggestionChip(
+                                            onClick = {
+                                                val info = LocationAddressInfo(
+                                                    city = city.name,
+                                                    country = "ایران",
+                                                    countryCode = "IR",
+                                                    latitude = city.lat,
+                                                    longitude = city.lon
+                                                )
+                                                val chipLocation = Location().toLocationWithAddressInfo(
+                                                    context.currentLocale,
+                                                    info,
+                                                    overwriteCoordinates = true
+                                                )
+                                                viewModel.setSelectedLocation(chipLocation, locationSearchSource)
+                                            },
+                                            label = { Text(city.name) }
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.normal_margin)))
+                            }
                             if (latestTextSearch.isNotEmpty() &&
                                 listResourceState.value.second == LoadableLocationStatus.SUCCESS
                             ) {

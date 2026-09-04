@@ -242,23 +242,28 @@ class MainActivity : BreezyActivity(), HomeFragment.Callback, ManagementFragment
         initModel(savedInstanceState == null)
         initView()
 
-        // Havadar: first-launch location permission prompt (declinable).
+        // Havadar: points & rewards (local, offline) — counts one open per day.
+        org.breezyweather.domain.points.PointsManager(this).onAppOpen()
+
+        // Havadar: first-launch location onboarding (declinable, retried until granted).
         lifecycleScope.launch {
             viewModel.initCompleted.first { it }
-            if (!SettingsManager.getInstance(this@MainActivity).firstLocationPromptShown) {
-                SettingsManager.getInstance(this@MainActivity).firstLocationPromptShown = true
-                if (viewModel.validLocationList.value.isEmpty() &&
-                    !hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
-                    !hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-                ) {
-                    requestPermissions(
-                        arrayOf(
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION
-                        ),
-                        PERMISSION_CODE_LOCATION_ACCESS
+            if (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) ||
+                hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+            ) {
+                if (viewModel.validLocationList.value.none { it.isCurrentPosition }) {
+                    viewModel.openChooseWeatherSourcesDialog(
+                        Location(isCurrentPosition = true).applyDefaultPreset(sourceManager)
                     )
                 }
+            } else {
+                requestPermissions(
+                    arrayOf(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                    ),
+                    PERMISSION_CODE_LOCATION_ACCESS
+                )
             }
         }
 
@@ -702,15 +707,45 @@ class MainActivity : BreezyActivity(), HomeFragment.Callback, ManagementFragment
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        // Havadar: after first-launch grant, offer adding your current place automatically.
+        // Havadar: after grant, add your current place automatically (if none yet).
         if (requestCode == PERMISSION_CODE_LOCATION_ACCESS &&
             grantResults.isNotEmpty() &&
             grantResults[0] == PackageManager.PERMISSION_GRANTED &&
-            viewModel.validLocationList.value.isEmpty()
+            viewModel.validLocationList.value.none { it.isCurrentPosition }
         ) {
             viewModel.openChooseWeatherSourcesDialog(
                 Location(isCurrentPosition = true).applyDefaultPreset(sourceManager)
             )
+        }
+
+        // Havadar: permission permanently denied? Guide the user to app settings.
+        if (requestCode == PERMISSION_CODE_LOCATION_ACCESS &&
+            grantResults.isNotEmpty() &&
+            grantResults[0] == PackageManager.PERMISSION_DENIED &&
+            !shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            !shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            val openSettingsState = mutableStateOf(true)
+            binding.locationPermissionDialog.setContent {
+                BreezyWeatherTheme {
+                    if (openSettingsState.value) {
+                        AlertDialogConfirmOnly(
+                            title = R.string.havadar_location_permission_settings_title,
+                            content = R.string.havadar_location_permission_settings_desc,
+                            confirmButtonText = R.string.havadar_action_open_settings,
+                            onConfirm = {
+                                startActivity(
+                                    Intent(
+                                        android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                        android.net.Uri.fromParts("package", packageName, null)
+                                    )
+                                )
+                                openSettingsState.value = false
+                            }
+                        )
+                    }
+                }
+            }
         }
 
         if (requestCode == PERMISSION_CODE_LOCATION_ACCESS &&

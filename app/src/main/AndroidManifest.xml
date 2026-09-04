@@ -312,6 +312,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.points.HavadarPointsActivity"
+            android:label="@string/havadar_points_title"
+            android:exported="false" />
+
         <!-- service -->
         <service
             android:name=".background.interfaces.TileService"

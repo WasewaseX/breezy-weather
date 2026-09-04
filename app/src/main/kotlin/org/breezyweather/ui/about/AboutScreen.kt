@@ -16,6 +16,7 @@
 
 package org.breezyweather.ui.about
 
+import android.content.Intent
 import androidx.activity.compose.LocalActivity
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -277,6 +278,26 @@ internal fun AboutScreen(
                     )
                 }
             }
+            item {
+                AboutAppLink(
+                    isFirst = true,
+                    isLast = true,
+                    icon = {
+                        Icon(
+                            imageVector = androidx.compose.material.icons.Icons.Filled.Star,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    },
+                    title = stringResource(R.string.havadar_points_title),
+                    onClick = {
+                        context.startActivity(
+                            Intent(context, org.breezyweather.ui.points.HavadarPointsActivity::class.java)
+                        )
+                    }
+                )
+            }
+
             largeSeparatorItem()
 
             if (contactLinks.isNotEmpty()) {

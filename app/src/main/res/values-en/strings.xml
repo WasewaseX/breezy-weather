@@ -1335,4 +1335,9 @@
     <string name="knmi_weather_text_hail_with_sun" translatable="false">Hail with some sun</string>
     <string name="knmi_weather_text_slippery_due_to_sleet" translatable="false">Slipperiness due to sleet</string>
     <string name="knmi_weather_text_fog" translatable="false">@string/common_weather_text_fog</string>
+    <string name="havadar_points_title">Points &amp; rewards</string>
+    <string name="havadar_quick_add_cities">Quick add — Iranian cities</string>
+    <string name="havadar_location_permission_settings_title">Location permission is off</string>
+    <string name="havadar_location_permission_settings_desc">To show weather for your place, enable location permission in Android settings.</string>
+    <string name="havadar_action_open_settings">Open settings</string>
 </resources>

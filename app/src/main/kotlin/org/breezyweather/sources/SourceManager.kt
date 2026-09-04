@@ -124,6 +124,10 @@ import org.breezyweather.sources.wmosevereweather.WmoSevereWeatherService
 import java.text.Collator
 import javax.inject.Inject
 
+// Havadar: Iran-focused allowlist — worldwide keyless sources only.
+// This removes all national weather sources (and anything needing a key) from every screen.
+private val FORK_ENABLED_SOURCE_IDS = setOf("openmeteo", "nominatim", "naturalearth", "debug")
+
 class SourceManager @Inject constructor(
     @ApplicationContext context: Context,
     accuService: AccuService,
@@ -327,6 +331,8 @@ class SourceManager @Inject constructor(
                 }
         )
         addAll(broadcastSourceList)
+    }.filter {
+        it is BroadcastSource || it is LocationSource || it.id in FORK_ENABLED_SOURCE_IDS
     }.toImmutableList()
 
     fun getSource(id: String): Source? = sourceList.firstOrNull { it.id == id }

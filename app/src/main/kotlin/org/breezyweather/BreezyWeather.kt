@@ -207,7 +207,7 @@ class BreezyWeather : Application(), Configuration.Provider {
                 isSignedByBreezy ||
                 debugMode
             ) {
-                "${getString(R.string.brand_name)}/${BuildConfig.VERSION_NAME} ${BuildConfig.REPORT_ISSUE}"
+                "Havadar/${BuildConfig.VERSION_NAME} ${BuildConfig.REPORT_ISSUE}"
             } else {
                 // Do not return anything if someone is trying to impersonate Breezy Weather
                 // or we would be made responsible for their app calls
