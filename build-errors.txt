@@ -1,0 +1,393 @@
+Fetching distribution.
+Downloading https://services.gradle.org/distributions/gradle-9.7.1-bin.zip
+..............10%..............20%...............30%..............40%...............50%..............60%...............70%..............80%..............90%...............100%
+
+Welcome to Gradle 9.7.1!
+
+Here are the highlights of this release:
+ - Isolated Projects graduates to incubating
+ - Broader Configuration Cache compatibility
+ - Resilient Sync helps you fix broken builds
+ - More source locations in problem reports
+
+For more details see https://docs.gradle.org/9.7.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+Configuration on demand is an incubating feature.
+Type-safe project accessors is an incubating feature.
+Project accessors enabled, but root project name not explicitly set for 'buildSrc'. Checking out the project in different folders will impact the generated code and implicitly the buildscript classpath, breaking caching.
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:generateExternalPluginSpecBuilders
+> Task :buildSrc:extractPrecompiledScriptPluginPlugins
+> Task :buildSrc:generateScriptPluginAdapters
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources
+> Task :buildSrc:compilePluginsBlocks
+> Task :buildSrc:generatePrecompiledScriptPluginAccessors
+
+> Task :buildSrc:compileKotlin
+w: file:///home/runner/work/breezy-weather/breezy-weather/buildSrc/src/main/kotlin/breezy/buildlogic/ProjectExtensions.kt:65:46 'fun Project.provideDelegate(any: Any?, property: KProperty<*>): PropertyDelegate' is deprecated. Use 'val property = project.property(name)' or 'val property = project.findProperty(name)' instead. See the Gradle 9.6 upgrading guide.
+
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:classes
+> Task :buildSrc:jar
+
+> Configure project :app
+WARNING: The option setting 'android.r8.optimizedResourceShrinking=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+Add android.sync.suppressAgpWarnings=UNSUPPORTED_PROJECT_OPTION_USE to the gradle.properties file to suppress this warning.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/build.gradle.kts:570:30: 'fun <U : Task> RegisteringDomainObjectDelegateProviderWithTypeAndAction<out TaskContainer, U>.provideDelegate(receiver: Any?, property: KProperty<*>): ExistingDomainObjectDelegate<TaskProvider<U>>' is deprecated. Use 'val task = tasks.register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/build.gradle.kts:570:30: 'fun <T : Any, C : PolymorphicDomainObjectContainer<T>, U : T> C.registering(type: KClass<U>, action: U.() -> Unit): RegisteringDomainObjectDelegateProviderWithTypeAndAction<out C, U>' is deprecated. Use 'val element = register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/build.gradle.kts:570:30: 'fun <T> ExistingDomainObjectDelegate<out T>.getValue(receiver: Any?, property: KProperty<*>): T' is deprecated. Use the named() API instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/build.gradle.kts:577:34: 'fun <U : Task> RegisteringDomainObjectDelegateProviderWithTypeAndAction<out TaskContainer, U>.provideDelegate(receiver: Any?, property: KProperty<*>): ExistingDomainObjectDelegate<TaskProvider<U>>' is deprecated. Use 'val task = tasks.register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/build.gradle.kts:577:34: 'fun <T : Any, C : PolymorphicDomainObjectContainer<T>, U : T> C.registering(type: KClass<U>, action: U.() -> Unit): RegisteringDomainObjectDelegateProviderWithTypeAndAction<out C, U>' is deprecated. Use 'val element = register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/build.gradle.kts:577:34: 'fun <T> ExistingDomainObjectDelegate<out T>.getValue(receiver: Any?, property: KProperty<*>): T' is deprecated. Use the named() API instead. See the Gradle 9.6 upgrading guide.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+
+> Configure project :data
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+
+> Configure project :domain
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+
+> Configure project :maps-utils
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+
+> Configure project :ui-weather-view
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+
+> Configure project :weather-unit
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+Add android.sync.suppressAgpWarnings=LIBRARY_CONSTRAINTS_SHOULD_BE_DISABLED to the gradle.properties file to suppress this warning.
+Configuration 'basicDebugCompileClasspath' was resolved during configuration time.
+This is a build performance and scalability issue.
+See https://github.com/gradle/gradle/issues/2298
+Run with --info for a stacktrace.
+Configuration 'basicDebugRuntimeClasspath' was resolved during configuration time.
+This is a build performance and scalability issue.
+See https://github.com/gradle/gradle/issues/2298
+Run with --info for a stacktrace.
+
+> Task :app:copyHebrewStrings
+> Task :app:copyIndonesianStrings
+> Task :app:generateLocalesConfig UP-TO-DATE
+> Task :app:preBuild
+> Task :app:preBasicDebugBuild
+> Task :app:mergeBasicDebugNativeDebugMetadata NO-SOURCE
+> Task :app:dataBindingMergeDependencyArtifactsBasicDebug
+> Task :app:generateBasicDebugResValues
+> Task :app:generateBasicDebugResources
+
+> Task :app:prepareLibraryDefinitionsBasicDebug
+--> `Apache License Version 2.0` does not contain the license text and configuration is in OFFLINE MODE. Please provide manually with `name`: `Apache License Version 2.0` and `hash`: `Apache-2.0`
+--> `European Union Public License 1.2` does not contain the license text and configuration is in OFFLINE MODE. Please provide manually with `name`: `European Union Public License 1.2` and `hash`: `7223f482c45f8fbe1070e42c0de799bf`
+--> `GNU Lesser General Public License v3.0 only` does not contain the license text and configuration is in OFFLINE MODE. Please provide manually with `name`: `GNU Lesser General Public License v3.0 only` and `hash`: `a80d2e4b3036109976bc999d7dfa0d0e`
+--> `MIT-0` does not contain the license text and configuration is in OFFLINE MODE. Please provide manually with `name`: `MIT-0` and `hash`: `MIT-0`
+--> `SIL Open Font License 1.1` does not contain the license text and configuration is in OFFLINE MODE. Please provide manually with `name`: `SIL Open Font License 1.1` and `hash`: `7d5dfc4bd7ea172eb9218ff7372e2773`
+--> `GNU Lesser General Public License v3.0` does not contain the license text and configuration is in OFFLINE MODE. Please provide manually with `name`: `GNU Lesser General Public License v3.0` and `hash`: `e423c1de10944d4415332fec724b31c9`
+
+> Task :data:preBuild UP-TO-DATE
+> Task :data:preDebugBuild UP-TO-DATE
+> Task :data:generateDebugResources
+> Task :data:packageDebugResources
+> Task :domain:preBuild UP-TO-DATE
+> Task :domain:preDebugBuild UP-TO-DATE
+> Task :domain:generateDebugResources FROM-CACHE
+> Task :domain:packageDebugResources
+> Task :maps-utils:preBuild UP-TO-DATE
+> Task :maps-utils:preDebugBuild UP-TO-DATE
+> Task :maps-utils:generateDebugResources FROM-CACHE
+> Task :maps-utils:packageDebugResources
+> Task :ui-weather-view:preBuild UP-TO-DATE
+> Task :ui-weather-view:preDebugBuild UP-TO-DATE
+> Task :ui-weather-view:generateDebugResources
+> Task :ui-weather-view:packageDebugResources
+> Task :weather-unit:preBuild UP-TO-DATE
+> Task :weather-unit:preDebugBuild UP-TO-DATE
+> Task :weather-unit:generateDebugResValues FROM-CACHE
+> Task :weather-unit:generateDebugResources
+> Task :weather-unit:packageDebugResources
+> Task :app:packageBasicDebugResources
+> Task :data:processDebugNavigationResources
+> Task :domain:processDebugNavigationResources FROM-CACHE
+> Task :maps-utils:processDebugNavigationResources FROM-CACHE
+> Task :ui-weather-view:processDebugNavigationResources
+> Task :weather-unit:processDebugNavigationResources
+> Task :app:mergeBasicDebugResources
+> Task :app:processBasicDebugNavigationResources
+> Task :domain:parseDebugLocalResources
+> Task :data:parseDebugLocalResources
+> Task :maps-utils:parseDebugLocalResources
+> Task :maps-utils:generateDebugRFile
+> Task :domain:generateDebugRFile
+> Task :data:generateDebugRFile
+> Task :ui-weather-view:parseDebugLocalResources
+> Task :weather-unit:parseDebugLocalResources
+> Task :app:generateBasicDebugBuildConfig
+> Task :ui-weather-view:generateDebugRFile
+> Task :weather-unit:generateDebugRFile
+> Task :app:parseBasicDebugLocalResources
+> Task :app:dataBindingGenBaseClassesBasicDebug
+> Task :app:generateBasicDebugRFile
+> Task :data:generateDebugDatabaseInterface
+> Task :weather-unit:javaPreCompileDebug
+> Task :domain:javaPreCompileDebug
+> Task :data:javaPreCompileDebug FROM-CACHE
+> Task :maps-utils:javaPreCompileDebug FROM-CACHE
+> Task :ui-weather-view:javaPreCompileDebug FROM-CACHE
+> Task :app:javaPreCompileBasicDebug
+> Task :app:generateBasicDebugAssets UP-TO-DATE
+> Task :data:generateDebugAssets UP-TO-DATE
+> Task :data:mergeDebugAssets
+> Task :domain:generateDebugAssets UP-TO-DATE
+> Task :domain:mergeDebugAssets
+> Task :maps-utils:generateDebugAssets UP-TO-DATE
+> Task :maps-utils:mergeDebugAssets
+> Task :ui-weather-view:generateDebugAssets UP-TO-DATE
+> Task :ui-weather-view:mergeDebugAssets
+> Task :weather-unit:generateDebugAssets UP-TO-DATE
+> Task :weather-unit:mergeDebugAssets
+> Task :app:mergeBasicDebugAssets
+> Task :app:compressBasicDebugAssets
+> Task :app:generateBasicDebugGlobalSynthetics
+
+> Task :maps-utils:compileDebugKotlin
+w: file:///home/runner/work/breezy-weather/breezy-weather/maps-utils/src/main/kotlin/com/google/maps/android/data/geojson/GeoJsonMultiPolygon.kt:54:43 Unchecked cast of 'Any' to 'List<GeoJsonPolygon>'.
+
+> Task :ui-weather-view:compileDebugKotlin
+> Task :maps-utils:compileDebugJavaWithJavac NO-SOURCE
+> Task :ui-weather-view:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:checkBasicDebugDuplicateClasses
+> Task :maps-utils:processDebugJavaRes
+> Task :maps-utils:bundleLibCompileToJarDebug
+> Task :ui-weather-view:bundleLibCompileToJarDebug
+> Task :ui-weather-view:processDebugJavaRes
+> Task :app:desugarBasicDebugFileDependencies
+> Task :weather-unit:compileDebugKotlin
+> Task :app:mergeExtDexBasicDebug
+> Task :weather-unit:compileDebugJavaWithJavac NO-SOURCE
+> Task :weather-unit:processDebugJavaRes
+> Task :weather-unit:bundleLibCompileToJarDebug
+> Task :maps-utils:bundleLibRuntimeToDirDebug
+> Task :ui-weather-view:bundleLibRuntimeToDirDebug
+> Task :weather-unit:bundleLibRuntimeToDirDebug
+> Task :maps-utils:bundleLibRuntimeToJarDebug
+> Task :ui-weather-view:bundleLibRuntimeToJarDebug
+> Task :weather-unit:bundleLibRuntimeToJarDebug
+> Task :data:writeDebugAarMetadata
+> Task :domain:writeDebugAarMetadata
+> Task :maps-utils:writeDebugAarMetadata
+> Task :ui-weather-view:writeDebugAarMetadata
+> Task :weather-unit:writeDebugAarMetadata
+> Task :app:mapBasicDebugSourceSetPaths
+> Task :app:checkBasicDebugAarMetadata
+> Task :app:compileBasicDebugNavigationResources
+> Task :app:createBasicDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksBasicDebug
+> Task :data:extractDeepLinksDebug
+> Task :domain:extractDeepLinksDebug FROM-CACHE
+> Task :domain:processDebugManifest
+> Task :data:processDebugManifest
+> Task :maps-utils:extractDeepLinksDebug FROM-CACHE
+> Task :ui-weather-view:extractDeepLinksDebug FROM-CACHE
+> Task :maps-utils:processDebugManifest
+> Task :ui-weather-view:processDebugManifest
+> Task :weather-unit:extractDeepLinksDebug FROM-CACHE
+> Task :weather-unit:processDebugManifest
+> Task :data:mapDebugSourceSetPaths
+> Task :app:processBasicDebugMainManifest
+> Task :app:processBasicDebugManifest
+> Task :data:compileDebugLibraryResources
+> Task :app:processBasicDebugManifestForPackage
+> Task :domain:mapDebugSourceSetPaths
+> Task :domain:compileDebugLibraryResources FROM-CACHE
+> Task :maps-utils:mapDebugSourceSetPaths
+> Task :maps-utils:compileDebugLibraryResources FROM-CACHE
+> Task :ui-weather-view:mapDebugSourceSetPaths
+> Task :weather-unit:mapDebugSourceSetPaths
+> Task :weather-unit:compileDebugLibraryResources
+> Task :ui-weather-view:compileDebugLibraryResources
+> Task :app:mergeBasicDebugJniLibFolders
+> Task :data:mergeDebugJniLibFolders
+> Task :data:mergeDebugNativeLibs NO-SOURCE
+> Task :data:copyDebugJniLibsProjectOnly
+> Task :domain:mergeDebugJniLibFolders
+> Task :domain:mergeDebugNativeLibs NO-SOURCE
+> Task :domain:copyDebugJniLibsProjectOnly
+> Task :maps-utils:mergeDebugJniLibFolders
+> Task :maps-utils:mergeDebugNativeLibs NO-SOURCE
+> Task :maps-utils:copyDebugJniLibsProjectOnly
+> Task :ui-weather-view:mergeDebugJniLibFolders
+> Task :ui-weather-view:mergeDebugNativeLibs NO-SOURCE
+> Task :ui-weather-view:copyDebugJniLibsProjectOnly
+> Task :weather-unit:mergeDebugJniLibFolders
+> Task :weather-unit:mergeDebugNativeLibs NO-SOURCE
+> Task :weather-unit:copyDebugJniLibsProjectOnly
+> Task :domain:compileDebugKotlin
+> Task :domain:compileDebugJavaWithJavac NO-SOURCE
+> Task :domain:bundleLibCompileToJarDebug
+> Task :app:mergeBasicDebugNativeLibs
+> Task :domain:processDebugJavaRes
+> Task :domain:bundleLibRuntimeToDirDebug
+> Task :domain:bundleLibRuntimeToJarDebug
+> Task :app:stripBasicDebugDebugSymbols
+> Task :app:validateSigningBasicDebug
+> Task :app:writeBasicDebugAppMetadata
+> Task :app:writeBasicDebugSigningConfigVersions
+> Task :app:processBasicDebugResources
+> Task :data:compileDebugKotlin
+> Task :data:compileDebugJavaWithJavac NO-SOURCE
+> Task :data:bundleLibCompileToJarDebug
+> Task :data:processDebugJavaRes
+> Task :data:bundleLibRuntimeToJarDebug
+> Task :data:bundleLibRuntimeToDirDebug
+> Task :app:mergeLibDexBasicDebug
+> Task :app:kspBasicDebugKotlin
+> Task :app:compileBasicDebugKotlin
+w: The argument '-Xannotation-default-target=param-property' is redundant for the current language version 2.4.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/common/actionmodecallback/BreezyTextToolbar.kt:56:41 'var text: CharSequence!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/common/actionmodecallback/BreezyTextToolbar.kt:87:41 'var text: CharSequence!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/common/bus/EventBus.kt:41:33 Unchecked cast of 'BusLiveData<Any>?' to 'BusLiveData<T (of fun <T> with)>'.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/common/di/HttpModule.kt:116:16 'constructor(serializersModule: SerializersModule = ..., configure: XmlConfig.CompatBuilder.() -> Unit = ...): XML' is deprecated. Update to the named factory functions.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/common/di/HttpModule.kt:121:13 'var autoPolymorphic: Boolean?' is deprecated. Directly access the policy, not this property.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/common/extensions/DateOldExtensions.kt:60:12 'constructor(p0: Int, p1: Int, p2: Int, p3: Int, p4: Int, p5: Int): Date' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/common/utils/ISO8601Utils.kt:308:23 Unnecessary non-null assertion (!!) on a non-null receiver of type 'RuntimeException'.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/domain/weather/model/Astro.kt:45:37 'fun Date.toTimezone(timeZone: TimeZone = ...): Date' is deprecated. Makes no sense, must be replaced.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/domain/weather/model/Astro.kt:46:35 'fun Date.toTimezone(timeZone: TimeZone = ...): Date' is deprecated. Makes no sense, must be replaced.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/sources/climweb/ClimWebService.kt:306:39 Unchecked cast of 'Map<Month, Normals?>' to 'Map<Month, Normals>'.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/details/DetailsViewModel.kt:97:64 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Weather'.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/details/DetailsViewModel.kt:98:32 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Weather'.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/details/components/DetailsSunMoon.kt:339:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/details/components/DetailsSunMoon.kt:415:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/details/components/DetailsSunMoon.kt:476:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/details/components/DetailsSunMoon.kt:534:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/MainActivity.kt:659:29 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/adapters/main/holder/AlertViewHolder.kt:102:9 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/adapters/main/holder/AlertViewHolder.kt:142:17 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/adapters/main/holder/ClockViewHolder.kt:39:34 'class AnalogClock : View' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/adapters/main/holder/ClockViewHolder.kt:54:29 'var timeZone: String?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/adapters/main/holder/FooterViewHolder.kt:208:33 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/dialogs/LicenseComplianceDialog.kt:149:9 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/dialogs/LocationHelpDialog.kt:129:9 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/main/fragments/ManagementFragment.kt:664:33 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/search/SearchActivity.kt:207:33 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/settings/compose/AppearanceSettingsScreen.kt:296:37 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/settings/preference/composables/ListPreference.kt:184:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/settings/preference/composables/MultiListPreference.kt:136:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/settings/preference/composables/MultiListPreference.kt:308:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/settings/preference/composables/Preference.kt:154:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/settings/preference/composables/SwitchPreference.kt:155:9 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/main/kotlin/org/breezyweather/ui/theme/weatherView/WeatherViewController.kt:82:13 'when' is exhaustive so 'else' is redundant here.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/src_nonfreenet/org/breezyweather/sources/android/AndroidGeocoderService.kt:36:38 'fun getFromLocation(p0: Double, p1: Double, p2: Int): (Mutable)List<Address!>?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/src_nonfreenet/org/breezyweather/sources/eccc/EcccService.kt:190:13 Condition is always 'true'.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/src_nonfreenet/org/breezyweather/sources/ims/ImsService.kt:218:37 Unnecessary safe call on a non-null receiver of type 'Double'.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/src_nonfreenet/org/breezyweather/sources/metie/MetIeService.kt:226:30 'fun Date.getFormattedDate(pattern: String, timeZone: TimeZone?, locale: Locale): String' is deprecated. Use ICU functions instead.
+w: file:///home/runner/work/breezy-weather/breezy-weather/app/src/src_nonfreenet/org/breezyweather/sources/mf/MfService.kt:761:43 Unchecked cast of 'Map<Month, Normals?>' to 'Map<Month, Normals>'.
+
+> Task :app:compileBasicDebugJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :app:processBasicDebugJavaRes
+> Task :app:hiltCollectClassesBasicDebug
+> Task :app:mergeBasicDebugJavaResource
+> Task :app:hiltAggregateDepsBasicDebug
+> Task :app:hiltJavaCompileBasicDebug
+> Task :app:transformBasicDebugClassesWithAsm
+> Task :app:dexBuilderBasicDebug
+> Task :app:mergeProjectDexBasicDebug
+> Task :app:packageBasicDebug
+> Task :app:createBasicDebugApkListingFileRedirect
+> Task :app:assembleBasicDebug
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/assemble-1788812635569.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/breezy-weather/breezy-weather/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 8m 58s
+154 actionable tasks: 140 executed, 14 from cache
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
