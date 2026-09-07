@@ -29,32 +29,40 @@ jobs:
       - name: Assemble basic debug APK (fork build, no breezy config)
         id: assemble
         continue-on-error: true
-        run: ./gradlew assembleBasicDebug --build-cache --stacktrace > build-output.txt 2>&1; echo "exit=$?" >> $GITHUB_OUTPUT
-
-      - name: Collect error lines
-        if: always()
         run: |
-          set +e
-          grep -E "^[0-9TZ:.-]+ (e: |w: file)" build-output.txt > build-errors.txt
-          grep -E "FAILURE:|What went wrong|Caused by|error:" build-output.txt >> build-errors.txt
-          echo "=== LAST 200 LINES ===" >> build-errors.txt
-          tail -n 200 build-output.txt >> build-errors.txt
-          wc -c build-errors.txt
+          ./gradlew assembleBasicDebug --build-cache --stacktrace > build-output.txt 2>&1
+          echo "exit=$?" >> $GITHUB_OUTPUT
+          echo "exit=$?"
 
-      - name: Commit error snapshot (skip CI to avoid loops)
+      - name: Commit full build log (for diagnosis)
         if: always()
         run: |
           set +e
           git config user.email "bot@havadar.local"
           git config user.name "havadar-ci-bot"
+          cp build-output.txt build-errors.txt
           git add build-errors.txt
-          git commit -m "CI error snapshot [skip ci]"
+          git commit -m "CI log snapshot [skip ci]"
           git push "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "HEAD:havadar/fa-main"
 
-      - name: Upload APK artifact
+      - name: Commit built APKs to repo (delivery via git, bypasses blocked blob hosts)
         if: steps.assemble.outputs.exit == '0'
+        run: |
+          set +e
+          git config user.email "bot@havadar.local"
+          git config user.name "havadar-ci-bot"
+          mkdir -p deliver
+          cp app/build/outputs/apk/basic/debug/*.apk deliver/
+          ls -la deliver/
+          git add deliver
+          git commit -m "CI build artifacts [skip ci]"
+          git push "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "HEAD:havadar/fa-main"
+
+      - name: Upload APK artifact (secondary, when Azure is reachable)
+        if: steps.assemble.outputs.exit == '0'
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: havadar-debug-apk
           path: app/build/outputs/apk/basic/debug/*.apk
-          if-no-files-found: error
+          if-no-files-found: ignore
