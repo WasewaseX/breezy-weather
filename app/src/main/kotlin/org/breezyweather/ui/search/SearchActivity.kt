@@ -78,7 +78,6 @@ import org.breezyweather.common.activities.BreezyActivity
 import org.breezyweather.common.extensions.currentLocale
 import org.breezyweather.common.extensions.inputMethodManager
 import breezyweather.domain.location.model.LocationAddressInfo
-import breezyweather.domain.location.model.toLocationWithAddressInfo
 import org.breezyweather.common.source.ConfigurableSource
 import org.breezyweather.common.source.NonFreeNetSource
 import org.breezyweather.common.source.RemovedSource
