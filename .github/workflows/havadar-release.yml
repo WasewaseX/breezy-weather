@@ -1,0 +1,74 @@
+name: Havadar release
+
+on:
+  push:
+    tags:
+      - 'havadar-v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          java-version-file: .github/.java-version
+          distribution: temurin
+
+      - name: Set up gradle
+        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
+
+      - name: Assemble signed release APKs
+        run: |
+          ./gradlew assembleBasicRelease --build-cache --stacktrace > build-output.txt 2>&1
+          exit_code=$?
+          echo "exit=$exit_code" >> $GITHUB_OUTPUT
+          exit $exit_code
+        id: assemble
+
+      - name: Collect APKs
+        if: steps.assemble.outputs.exit == '0'
+        run: |
+          set -e
+          mkdir -p deliver
+          cp app/build/outputs/apk/basic/release/*.apk deliver/
+          cd deliver
+          for f in *.apk; do mv "$f" "havadar-${GITHUB_REF_NAME}_${f}"; done
+          ls -la
+          for f in *.apk; do sha256sum "$f" >> ../SHA256SUMS.txt; done
+
+      - name: Create GitHub Release with APKs
+        if: steps.assemble.outputs.exit == '0'
+        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        with:
+          name: Havadar ${{ github.ref_name }}
+          body: |
+            **هوادار (Havadar)** — Persian-first weather app, fork of Breezy Weather (Apache-2.0).
+
+            ### Install
+            - Most phones (2016+): `havadar-${{ github.ref_name }}_app-basic-arm64-v8a-release.apk`
+            - Universal (all devices): `havadar-${{ github.ref_name }}_app-basic-universal-release.apk`
+
+            Signed with the Havadar release key. Farsi-first UI, Celsius default, Nominatim search, Open-Meteo weather.
+          files: |
+            deliver/*.apk
+            SHA256SUMS.txt
+
+      - name: Commit release APKs into the repo (delivery channel that works when Azure blobs are blocked)
+        if: steps.assemble.outputs.exit == '0'
+        run: |
+          set +e
+          git config user.email "bot@havadar.local"
+          git config user.name "havadar-ci-bot"
+          git add deliver SHA256SUMS.txt
+          git commit -m "Release ${{ github.ref_name }} APKs [skip ci]"
+          git push "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "HEAD:havadar/fa-main"

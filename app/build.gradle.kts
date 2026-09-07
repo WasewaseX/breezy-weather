@@ -50,6 +50,18 @@ configure<ApplicationExtension> {
         }
     }
 
+    val havadarKeystoreFile = rootProject.file("keystore/havadar-release.jks")
+    if (havadarKeystoreFile.exists()) {
+        signingConfigs {
+            create("havadar") {
+                storeFile = havadarKeystoreFile
+                storePassword = "HavadarSign2026"
+                keyAlias = "havadar"
+                keyPassword = "HavadarSign2026"
+            }
+        }
+    }
+
     buildTypes {
         named("debug") {
             applicationIdSuffix = ".debug"
@@ -59,6 +71,9 @@ configure<ApplicationExtension> {
             isShrinkResources = true
             isMinifyEnabled = true
             isDebuggable = false
+            if (havadarKeystoreFile.exists()) {
+                signingConfig = signingConfigs.getByName("havadar")
+            }
             isCrunchPngs = false // No need to do that, we already optimized them
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
