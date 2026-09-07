@@ -23,9 +23,9 @@ configure<ApplicationExtension> {
     namespace = "org.breezyweather"
 
     defaultConfig {
-        applicationId = "org.breezyweather"
-        versionCode = 60203
-        versionName = "6.2.3"
+        applicationId = "ir.havadar.weather"
+        versionCode = 5
+        versionName = "0.5.0"
 
         buildConfigField("String", "COMMIT_COUNT", "\"${getCommitCount()}\"")
         buildConfigField("String", "COMMIT_SHA", "\"${getGitSha()}\"")
